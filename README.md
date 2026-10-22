@@ -23,9 +23,12 @@ The application stores violation details and supporting image evidence in a data
 
 - **Programming Language:** Python
 - **Web Framework:** Django
-- **Deep Learning Model:** YOLOv8
+- **Artificial Intelligence:** Deep Learning
+- **Computer Vision:** OpenCV
+- **Object Detection Model:** YOLOv8
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap
 - **Database:** SQLite
+- **PDF Generation:** ReportLab
 - **Development Environment:** PyCharm
 - **Operating System:** Windows 11
 
