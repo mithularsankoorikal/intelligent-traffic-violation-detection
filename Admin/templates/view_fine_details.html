@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Fine Details</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h2>View Fine Details</h2>
+    <a href="{% url 'admin_dashboard' %}" class="button">Dashboard</a>
+    <br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>Sl. No</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Vehicle No</th>
+                <th>Fine</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fine in fines %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ fine.user_name }}</td>
+                <td>{{ fine.email }}</td>
+                <td>{{ fine.vehicle_no }}</td>
+                <td>₹{{ fine.fine_amount }}</td>
+                <td class="{% if fine.status == 'Paid' %}paid{% else %}pending{% endif %}">
+                    {{ fine.status }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% if messages %}
+                    {% for m in messages %}
+                    <p style="color:white; text-align:center;">
+                        {{m}}
+                    </p>
+                    {% endfor %}
+                    {% endif %}
+</body>
+</html>

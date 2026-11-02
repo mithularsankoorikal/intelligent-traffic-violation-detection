@@ -1,0 +1,167 @@
+```css
+/* vi.css — matching the ud.css blue-and-white dashboard theme */
+
+/* General page styling */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #f4f8fc, #eaf2fb);
+    color: #243447;
+    margin: 0;
+    padding: 30px 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Main container */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(36, 52, 71, 0.10);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Page heading */
+h1 {
+    color: #243447;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 25px;
+}
+
+h2 {
+    color: #243447;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 25px;
+}
+
+/* Gallery layout */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 22px;
+    margin-top: 20px;
+}
+
+/* Image cards */
+.image-box {
+    width: 370px;
+    max-width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e2ebf5;
+    box-shadow: 0 5px 18px rgba(36, 52, 71, 0.09);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-sizing: border-box;
+}
+
+.image-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 91, 161, 0.15);
+}
+
+/* Images */
+.image-box img {
+    display: block;
+    width: 100%;
+    height: 85%;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+/* Optional text below images */
+.image-box p,
+.image-box span {
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #243447;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0 20px;
+}
+
+/* Blue gradient buttons */
+.btn {
+    display: inline-block;
+    font-family: 'Poppins', Arial, sans-serif;
+    text-decoration: none;
+    padding: 11px 22px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0078d4, #005ba1);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 91, 161, 0.15);
+    transition: background 0.2s ease, transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #005ba1, #004578);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 91, 161, 0.22);
+}
+
+.btn:focus-visible {
+    outline: 3px solid #80c5ff;
+    outline-offset: 3px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    body {
+        padding: 15px 10px;
+    }
+
+    .container {
+        width: 100%;
+        margin: 15px auto;
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .gallery {
+        gap: 18px;
+    }
+
+    .image-box {
+        width: 100%;
+        height: 260px;
+    }
+
+    .button-container {
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+    }
+}
+```

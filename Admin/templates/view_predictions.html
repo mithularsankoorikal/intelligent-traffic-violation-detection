@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processed Videos</title>
+    <link rel="stylesheet" href="{% static 'css/vp.css' %}">
+</head>
+<body>
+    <h2>Processed Videos</h2>
+    <div class="button-container">
+            <a href="{% url 'admin_dashboard' %}" class="btn">Dashboard</a>
+            <a href="{% url 'admin_logout' %}" class="btn">Logout</a>
+            <a href="{% url 'view_violation_images' %}" class="btn">Violation Images</a>
+        </div>
+    <div class="video-container">
+        {% for video in videos %}
+        <div class="video-box">
+            <h4>{{ video.video_name }}</h4>
+            <video controls>
+                <source src="{{ video.processed_video_url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% empty %}
+        <p>No processed videos available.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

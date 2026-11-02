@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <button onclick="window.location.href='{% url 'admin_logout' %}';" class="logout-btn">Logout</button>
+    </header>
+    <main>
+        <div class="button-container">
+            <button onclick="window.location.href='{% url 'view_predictions' %}';" class="dashboard-btn gradient-btn">View Predictions</button>
+            <button onclick="window.location.href='{% url 'user_details' %}';" class="dashboard-btn gradient-btn">User Details</button>
+            <button onclick="window.location.href='{% url 'view_fine_details' %}';" class="dashboard-btn gradient-btn">Fine Details</button>
+            <button onclick="window.location.href='{% url 'view_violation_images' %}';" class="dashboard-btn gradient-btn">Add Fine</button>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 Admin Dashboard. All rights reserved.</p>
+    </footer>
+</body>
+</html>

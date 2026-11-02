@@ -1,0 +1,176 @@
+```css
+
+/* General page styling */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #f4f8fc, #eaf2fb);
+    color: #243447;
+    margin: 0;
+    padding: 40px 5%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Main container */
+.container {
+    width: 100%;
+    max-width: 650px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 35px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(36, 52, 71, 0.10);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Heading */
+h2 {
+    margin: 0 0 25px;
+    color: #243447;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+/* Form layout */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 5px;
+    color: #243447;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Input fields and dropdowns */
+input,
+select {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 5px;
+    border: 1px solid #d5e1ee;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #243447;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Input focus effect */
+input:focus,
+select:focus {
+    border-color: #0078d4;
+    box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.12);
+}
+
+/* Placeholder text */
+input::placeholder {
+    color: #8798a9;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+/* Submit button */
+button {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #0078d4, #005ba1);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 91, 161, 0.15);
+    transition: background 0.2s ease, transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+/* Button hover effect */
+button:hover {
+    background: linear-gradient(135deg, #005ba1, #004578);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 91, 161, 0.22);
+}
+
+/* Keyboard accessibility */
+button:focus-visible {
+    outline: 3px solid #80c5ff;
+    outline-offset: 3px;
+}
+
+/* Links */
+.container a {
+    color: #0078d4;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.container a:hover {
+    color: #005ba1;
+    text-decoration: underline;
+}
+
+/* Tablet screens */
+@media (max-width: 768px) {
+    body {
+        padding: 25px 20px;
+    }
+
+    .container {
+        max-width: 100%;
+        margin: 15px auto;
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+        align-items: flex-start;
+    }
+
+    .container {
+        margin: 15px auto;
+        padding: 22px 18px;
+        border-radius: 15px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    input,
+    select {
+        padding: 11px 12px;
+    }
+
+    button {
+        padding: 11px 16px;
+    }
+}
+```

@@ -1,0 +1,135 @@
+/* ----------------------
+   GLOBAL
+---------------------- */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background: linear-gradient(135deg, #f4f8fc, #eaf2fb);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* ----------------------
+   CONTAINER
+---------------------- */
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+}
+
+.reg-container{
+    width:100%;
+    max-width:420px;
+}
+
+/* ----------------------
+   FORM CARD
+---------------------- */
+.form-container{
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(14px);
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 18px 45px rgba(0,0,0,0.15);
+}
+
+/* ----------------------
+   TITLE
+---------------------- */
+.form-container h1{
+    text-align:center;
+    color:#0078d4;
+    margin-bottom:25px;
+    letter-spacing:1px;
+}
+
+/* ----------------------
+   INPUTS
+---------------------- */
+.reg-container form input{
+    width:100%;
+    padding:12px;
+    margin:8px 0 18px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:14px;
+    transition:all 0.2s ease;
+}
+
+.reg-container form input:focus{
+    border-color:#0078d4;
+    outline:none;
+    box-shadow:0 0 0 3px rgba(0,120,212,0.2);
+}
+
+/* ----------------------
+   BUTTON
+---------------------- */
+.reg-container form button{
+    width:100%;
+    background: linear-gradient(135deg, #0078d4, #005ba1);
+    color:white;
+    padding:12px;
+    border-radius:25px;
+    font-weight:700;
+    border:none;
+    cursor:pointer;
+    margin-top:10px;
+    transition:all 0.3s ease;
+}
+
+.reg-container form button:hover{
+    box-shadow:0 10px 25px rgba(0,120,212,0.4);
+    transform:translateY(-2px);
+}
+
+/* ----------------------
+   LINKS
+---------------------- */
+.register-forget{
+    display:flex;
+    justify-content:space-between;
+    margin-top:20px;
+}
+
+.register-forget a{
+    font-size:14px;
+    color:#0078d4;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.register-forget a:hover{
+    text-decoration:underline;
+}
+
+/* ----------------------
+   ERROR MESSAGES
+---------------------- */
+.form-container p{
+    background:#ffe5e5;
+    color:#cc0000 !important;
+    border-radius:8px;
+    padding:10px;
+    margin-top:10px;
+    font-size:14px;
+}
+
+/* ----------------------
+   REMOVE OLD DECORATIONS
+---------------------- */
+.circle,
+.theme-btn-container,
+.theme-btn,
+.illustration{
+    display:none;
+}

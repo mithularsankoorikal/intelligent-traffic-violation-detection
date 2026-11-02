@@ -1,0 +1,287 @@
+/* ===== COLOR SYSTEM: MATCH USER DASHBOARD ===== */
+:root {
+    --primary: #0078d4;
+    --primary-dark: #005ba1;
+    --background: #f4f8fc;
+    --surface: rgba(255, 255, 255, 0.95);
+    --text: #243447;
+    --muted: #60758a;
+}
+
+/* ===== GENERAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== PAGE BACKGROUND ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #f4f8fc, #eaf2fb);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 30px 20px;
+}
+
+/* ===== HEADINGS ===== */
+h1,
+h2 {
+    color: var(--primary);
+    font-weight: 700;
+    margin: 10px 0 25px;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+/* ===== COMMON BUTTONS ===== */
+.button,
+.pay-now,
+.download {
+    display: inline-block;
+    padding: 11px 22px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 120, 212, 0.18);
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.button:hover,
+.pay-now:hover,
+.download:hover {
+    background: linear-gradient(135deg, var(--primary-dark), #004578);
+    box-shadow: 0 8px 22px rgba(0, 120, 212, 0.3);
+}
+
+.button:focus-visible,
+.pay-now:focus-visible,
+.download:focus-visible {
+    outline: 3px solid rgba(0, 120, 212, 0.4);
+    outline-offset: 4px;
+}
+
+/* ===== PENDING BILLS GRID ===== */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    width: min(1000px, 100%);
+    margin: 30px auto;
+}
+
+/* ===== BILL CARDS ===== */
+.bill-box {
+    background: var(--surface);
+    color: var(--text);
+    padding: 24px;
+    border: 1px solid rgba(0, 120, 212, 0.12);
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.bill-box:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 120, 212, 0.4);
+    box-shadow: 0 18px 35px rgba(0, 120, 212, 0.15);
+}
+
+.bill-box p {
+    color: var(--text);
+    margin: 15px 0;
+}
+
+/* ===== VIOLATION IMAGE ===== */
+.bill-image {
+    display: block;
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+/* ===== FINE DETAILS TABLE ===== */
+table {
+    width: 80%;
+    max-width: 900px;
+    margin: 25px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid rgba(0, 120, 212, 0.12);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+}
+
+th,
+td {
+    padding: 13px 16px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 120, 212, 0.1);
+}
+
+th {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    font-weight: 600;
+}
+
+td {
+    color: var(--text);
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: #f2f8ff;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== PAYMENT STATUS ===== */
+.paid {
+    color: #16803c;
+    font-weight: bold;
+}
+
+.pending {
+    color: #a96700;
+    font-weight: bold;
+}
+
+/* ===== PAYMENT SUCCESS MESSAGE ===== */
+#success-message {
+    width: min(500px, 100%);
+    margin: 25px auto;
+    padding: 24px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid rgba(0, 120, 212, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+    line-height: 1.8;
+}
+
+#success-message p {
+    margin-bottom: 15px;
+}
+
+/* ===== UPI MODAL ===== */
+#upiModal {
+    padding: 20px;
+}
+
+#upiModal > div {
+    width: 100% !important;
+    max-width: 380px;
+    padding: 28px !important;
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    border: 1px solid rgba(0, 120, 212, 0.12);
+    border-radius: 20px !important;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+#upiModal h3 {
+    color: var(--primary);
+    margin-bottom: 18px;
+}
+
+#upiModal p {
+    color: var(--text);
+    margin: 15px 0;
+}
+
+#upiId {
+    width: 100% !important;
+    padding: 12px !important;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid rgba(0, 120, 212, 0.25);
+    border-radius: 8px;
+    outline: none;
+}
+
+#upiId:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.12);
+}
+
+#upiId::placeholder {
+    color: var(--muted);
+}
+
+#upiModal .button,
+#upiModal .pay-now {
+    margin: 5px 3px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 22px 14px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .bill-box {
+        padding: 20px;
+    }
+
+    th,
+    td {
+        padding: 10px 6px;
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .button,
+    .pay-now,
+    .download {
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+
+    #upiModal > div {
+        padding: 22px !important;
+    }
+}

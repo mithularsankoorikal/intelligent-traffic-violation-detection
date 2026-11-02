@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Bills</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+<h2>Pending Bills</h2>
+
+<a href="{% url 'user_dashboard' %}" class="button">Dashboard</a>
+
+<div class="grid-container">
+    {% for fine in pending_fines %}
+    <div class="bill-box">
+        {% if fine.image_path %}
+            <img src="{{ MEDIA_URL }}{{ fine.image_path }}" alt="Violation Image" class="bill-image">
+        {% else %}
+            <p>No image available</p>
+        {% endif %}
+
+        <p>Amount: ₹{{ fine.fine_amount }}</p>
+
+        <form method="POST" action="{% url 'pay_fine' fine.id %}" class="pay-form">
+            {% csrf_token %}
+            <button type="button"
+                    class="pay-now"
+                    onclick="openUpiModal(this, '{{ fine.fine_amount }}')">
+                Pay Now
+            </button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+
+<br><br>
+
+<a href="{% url 'user_fine_details' %}" class="button">Fine Details</a>
+
+<!-- Success Message -->
+<div id="success-message" style="display: none;">
+    <p>
+        Your Payment Completed Successfully.
+        Please Download the Receipt.
+    </p>
+    <button class="download" onclick="downloadReceipt()">Download Receipt</button>
+</div>
+
+
+<!-- UPI Modal -->
+<div id="upiModal" style="
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+">
+    <div style="
+        background:#fff;
+        padding:25px;
+        border-radius:10px;
+        width:300px;
+        text-align:center;
+    ">
+        <h3>UPI Payment</h3>
+
+        <p>Amount: ₹<span id="upiAmount"></span></p>
+
+        <input type="text"
+               id="upiId"
+               placeholder="example@upi"
+               style="width:90%;padding:8px;">
+
+        <br><br>
+
+        <button class="pay-now" onclick="confirmUpiPayment()">Pay</button>
+        <button class="button" onclick="closeUpi()">Cancel</button>
+    </div>
+</div>
+
+
+
+<script>
+let currentForm = null;
+let selectedFineId = null;
+
+function openUpiModal(button, amount) {
+    document.getElementById("upiAmount").innerText = amount;
+    document.getElementById("upiModal").style.display = "flex";
+
+    // find form from clicked button
+    currentForm = button.closest("form");
+
+    // extract fine id
+    selectedFineId = currentForm.action.split("/").slice(-2, -1)[0];
+}
+
+function closeUpi() {
+    document.getElementById("upiModal").style.display = "none";
+}
+
+function confirmUpiPayment() {
+    const upi = document.getElementById("upiId").value;
+
+    if (!upi) {
+        alert("Please enter UPI ID");
+        return;
+    }
+
+    alert("Payment Successful");
+
+    closeUpi();
+
+    document.getElementById('success-message').style.display = 'block';
+
+    // submit form → updates DB to Paid
+    setTimeout(() => {
+        if (currentForm) {
+            currentForm.submit();
+        }
+    }, 3000);
+}
+
+function downloadReceipt() {
+    if (selectedFineId) {
+        window.location.href = `/user/download_receipt/${selectedFineId}/`;
+    } else {
+        alert("No fine selected for download.");
+    }
+}
+</script>
+
+</body>
+</html>

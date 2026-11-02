@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Monitoring System</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1 class="main-heading">Start Traffic Monitoring and Compliance System</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li class="dropdown">
+                    <a href="#">Registration &#9662;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'admin_reg' %}">Admin</a></li>
+                        <li><a href="{% url 'user_reg' %}">User</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Login &#9662;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'admin_log' %}">Admin</a></li>
+                        <li><a href="{% url 'user_log' %}">User</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section class="info-grid">
+    <div class="info-card">
+        <h3>Instant Challan Status</h3>
+        <p>Check challans by vehicle number with real-time results.</p>
+    </div>
+    <div class="info-card">
+        <h3>View Violation Evidence</h3>
+        <p>See images and details of your traffic violations.</p>
+    </div>
+    <div class="info-card">
+        <h3>Secure Payments</h3>
+        <p>Pay fines safely using UPI.</p>
+    </div>
+</section>
+
+    <section id="home" class="upload-section">
+        <h2>Upload Video</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="video" accept="video/*" required>
+            <button type="submit">Upload</button>
+        </form>
+    </section>
+    <section class="result-section">
+        <h2>Resultant Video</h2>
+        {% if processed_video %}
+        <video width="640" height="360" controls autoplay>
+            <source src="{{ processed_video }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <br>
+        <a href="{% url 'home' %}" style="color:white" class="button">Refresh</a>
+        {% else %}
+        <p>No processed video available.</p>
+        {% endif %}
+    </section>
+    <section id="about" class="about-section">
+        <h2>Introduction About the Website</h2>
+        <p>
+            The Traffic Monitoring and Compliance System is an intelligent web-based platform designed to
+            automatically detect traffic rule violations using computer vision and deep learning techniques.
+            The system analyzes traffic videos to identify violations such as riding without a helmet and
+            triple riding. By automating traffic monitoring, this system reduces
+            manual effort, improves accuracy, and enhances road safety.
+        </p>
+
+        <h2>How It Works</h2>
+        <p>
+            The system accepts a traffic surveillance video as input. Each video is processed frame-by-frame
+            using a YOLO (You Only Look Once) object detection model to identify vehicles, helmets, riders,
+            and number plates. When a traffic rule violation is detected, the corresponding frame is captured
+            and stored as evidence.
+            <br><br>
+            The detected violation images are displayed on the admin dashboard, where the administrator can
+            verify the violation and issue a fine to the registered vehicle owner. The fine details along with
+            the violation image are sent to the user via email. The user can log in to their dashboard, view
+            pending fines, make the payment, and download a digital receipt after successful payment.
+        </p>
+
+        <h2>Technology Stack</h2>
+        <p>
+            <strong>Backend:</strong> Django (Python) for server-side logic, authentication, and database management.<br>
+            <strong>Deep Learning Model:</strong> YOLO (Ultralytics) for real-time object detection and violation identification.<br>
+            <strong>Computer Vision:</strong> OpenCV for video processing and frame extraction.<br>
+            <strong>Frontend:</strong> HTML, CSS, JavaScript for user interface design and interaction.<br>
+            <strong>Database:</strong> SQLite for storing user data, violation records, and fine details.<br>
+            <strong>Email Service:</strong> SMTP integration for sending fine notifications and alerts to users.
+        </p>
+    </section>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine Details</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h2>Fine Details</h2>
+    <a href="{% url 'user_dashboard' %}" class="button">Dashboard</a>
+    <br> <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Sl. No</th>
+                <th>Vehicle No</th>
+                <th>Fine</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fine in user_fines %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ fine.vehicle_no }}</td>
+                <td>₹{{ fine.fine_amount }}</td>
+                <td class="{% if fine.status == 'Paid' %}paid{% else %}pending{% endif %}">
+                    {{ fine.status }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><br>
+<a href="{% url 'pending_bills' %}" class="button">Pending Bills</a>
+</body>
+</html>

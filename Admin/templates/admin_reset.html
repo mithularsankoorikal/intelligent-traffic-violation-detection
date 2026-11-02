@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="{% static 'css/admin.log.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Reset Password</h2>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <label for="otp">OTP:</label>
+            <input type="number" id="otp" name="otp" required>
+
+            <label for="password"> New Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="re_password">Confirm New Password:</label>
+            <input type="password" id="re_password" name="re_password" required>
+
+            <button type="submit">Reset</button>
+            {% if messages %}
+                    {% for m in messages %}
+                    <p style="color:red; text-align:center;">
+                        {{m}}
+                    </p>
+                    {% endfor %}
+                    {% endif %}
+        </form>
+        <div class="links">
+            <a href="{% url 'home' %}">Home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/user.dashboard.css' %}">
+
+</head>
+<body>
+    <header>
+        <h1>User Dashboard</h1>
+        <button onclick="window.location.href='{% url 'user_logout' %}';" class="logout-btn">Logout</button>
+    </header>
+
+    <main>
+        <div class="button-container">
+            <button onclick="window.location.href='{% url 'user_fine_details' %}';" class="dashboard-btn gradient-btn">Fine Details</button>
+            <button onclick="window.location.href='{% url 'pending_bills' %}';" class="dashboard-btn gradient-btn"> Pending Bills</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 User Dashboard. All rights reserved.</p>
+    </footer>
+</body>
+</html>

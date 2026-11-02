@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Vehicle Owners</title>
+    <link rel="stylesheet" href="{% static 'css/ud.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Show Vehicle Owners</h1>
+        <div class="button-container">
+            <a href="{% url 'admin_dashboard' %}" class="btn">Dashboard</a>
+            <a href="{% url 'admin_logout' %}" class="btn">Logout</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Name</th>
+                    <th>Vehicle No.</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr class="{% cycle 'even' 'odd' %}">
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.vehicle_no }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.mobile }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helmet Violations</title>
+    <link rel="stylesheet" href="{% static 'css/vi.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Violations</h2>
+            <div class="button-container">
+            <a href="{% url 'admin_dashboard' %}" class="btn">Dashboard</a>
+            <a href="{% url 'admin_logout' %}" class="btn">Logout</a>
+            <a href="{% url 'view_predictions' %}" class="btn">Prediction Videos</a>
+        </div>
+        <div class="gallery">
+            {% for violation in violations %}
+                <div class="image-box">
+                    <img src="{{ MEDIA_URL }}{{ violation.image_path }}" alt="No Helmet Violation">
+                    <br>
+                    <a href="{% url 'give_fine' image_id=violation.id %}" class="btn">Add Fine</a>
+                </div>
+            {% empty %}
+                <p>No violations detected.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
